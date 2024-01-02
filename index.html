@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles/syles.css">
+
+  <title>Frontend Mentor | News homepage</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="#" class="nav-logo">W.</a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">New</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Popular</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Tranding</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Categories</a>
+        </li>
+      </ul>
+      <div id="hamberger" class="hamberger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+    <section class="header">
+      <div class="header-left">
+        <div class="container-image"> <img /></div> 
+        <div class="container-content">
+          <div class="content-left">
+            <p>The Bright Future of Web 3.0?</p>
+          </div>
+          <div class="content-right">
+            <p>We dive into the next evolution of the web that claims to put the power of the
+              platforms back into the hands of the people. But is if really fulfilling its promise?</p>
+            <div class="buttom">READ MORE</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="header-right">
+        <h1>New</h1>
+        <h2>Hydrogen VS Electric Cars</h2>
+        <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+        <hr class="line" />
+        <h2>The Downsides of AI Artistry</h2>
+        <p>What are the possible adverse effects of on-demand AI image generation?</p>
+        <hr class="line" />
+        <h2>Is VC Funding Drying Up?</h2>
+        <p>Private funding by VC firms is down 50% YOY. we take a look at what that means.</p>
+      </div>
+    </section>
+<section id="detail" class="container-detail"></section>
+    <script>
+      const dataDetail = document.querySelector("#detail");
+       
+      const generateData =(data)=>{
+        data.map((item, index)=>{
+          const newDev = document.createElement('div');
+          const img =document.createElement('img')
+
+          newDev.classList.add('box-detail')
+          const divHtml = `
+          <div class="box-left">
+            <img class="img" src="${item.img}"/>
+           </div>
+           <div class="box-right">
+            <div class='title'>${item.id}</div>
+            <div class='header'><a href="#">${item.header}</a></div>
+            <div class='detail'>${item.detail}</div>
+            </div>
+          
+          `
+          newDev.innerHTML = divHtml
+          dataDetail.appendChild(newDev)
+
+        })
+      }
+
+      fetch('./data.json')
+      .then(res => res.json())
+      .then(data => generateData(data))
+    </script>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
